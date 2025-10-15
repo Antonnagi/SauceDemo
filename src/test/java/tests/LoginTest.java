@@ -13,6 +13,7 @@ public class LoginTest extends BaseTest{
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("inventory.html"), "Login failed!");
     }
+
     @Test(priority = 2, description = "Unsuccessful login with invalid credentials")
  public void invalidLoginTest() {
         LoginPage loginPage = new LoginPage(driver);

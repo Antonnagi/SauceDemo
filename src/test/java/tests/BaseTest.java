@@ -3,7 +3,10 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utils.ConfigReader;
 import utils.DriverFactory;
+
+import java.time.Duration;
 
 
 public class BaseTest {
@@ -12,14 +15,15 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         driver = DriverFactory.initDriver();
-        driver.get("https://www.saucedemo.com/");
+        driver.get(ConfigReader.getProperty("baseUrl"));
+
     }
 
     @AfterMethod
     public void tearDown() {
-        if (driver != null) {
+
             DriverFactory.quitDriver();
-        }
+
     }
 }
 

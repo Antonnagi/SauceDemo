@@ -13,10 +13,10 @@ public class InventoryTest extends BaseTest {
         loginPage.login("standard_user","secret_sauce");
 
 
-        InventoryPage inetventoryPage = new InventoryPage(driver);
-        Assert.assertEquals(inetventoryPage.getPageTitle(), "Products", "Page title does not match");
-            inetventoryPage.clickOnAddToCartButton();
-            inetventoryPage.clickOnCartIcon();
+        InventoryPage inventoryPage  = new InventoryPage(driver);
+        Assert.assertEquals(inventoryPage .getPageTitle(), "Products", "Page title does not match");
+        inventoryPage .clickOnAddToCartButton();
+        inventoryPage .clickOnCartIcon();
         String curentUrl = driver.getCurrentUrl();
         Assert.assertTrue(curentUrl.contains("cart.html"),
                 "Cart page not opened!");

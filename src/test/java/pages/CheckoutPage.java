@@ -2,9 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutPage {
-    private WebDriver driver;
+public class CheckoutPage extends BasePage{
     private By firstNameField = By.id("first-name");
     private By lastNameField = By.id("last-name");
     private By postalCodeField = By.id("postal-code");
@@ -15,31 +15,38 @@ public class CheckoutPage {
     private By backHomeButton = By.id("back-to-products");
 
     public CheckoutPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
-    public void cancel(){
-        driver.findElement(cancelButton).click();
+    public CheckoutPage cancel(){
+        click(cancelButton);
+        return this;
     }
-    public void fillInfo(String firstName, String lastName, String postalCode){
-        driver.findElement(firstNameField).sendKeys(firstName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(postalCodeField).sendKeys(postalCode);
+    public CheckoutPage fillInfo(String firstName, String lastName, String postalCode){
+     type( firstNameField,firstName);
+     type( lastNameField,lastName);
+     type(postalCodeField,postalCode);
+        return  this;
+    }
 
+    public CheckoutPage clickOnContinueButton(){
+        click(continueButton);
+        return this;
     }
-    public void clickOnContinueButton(){
-        driver.findElement(continueButton).click();
+    public CheckoutPage clickOnFinishButton(){
+
+        click(finishButton);
+        return  this;
     }
-    public void clickOnFinishButton(){
-        driver.findElement(finishButton).click();
-    }
-    public  void clickOnCancelButton(){
-        driver.findElement(cancelButton).click();
+    public  CheckoutPage clickOnCancelButton(){
+        click(cancelButton);
+        return  this;
     }
     public String getSuccessMessage(){
-        return driver.findElement(successMessage).getText();
+        return getText(successMessage);
     }
-    public void clickOnBackHomeButton(){
-        driver.findElement(backHomeButton).click();
+    public CheckoutPage clickOnBackHomeButton(){
+        click(backHomeButton);
+        return   this;
     }
 
 }

@@ -3,25 +3,30 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class InventoryPage {
-    private WebDriver driver;
+public class InventoryPage extends BasePage {
+
     private By pageTitle = By.className("title");
     private By addToCartButton = By.cssSelector("button[data-test='add-to-cart-sauce-labs-backpack']");
     private By cartIcon = By.className("shopping_cart_link");
 
     public InventoryPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+
     }
 
     public String getPageTitle() {
-        return driver.findElement(pageTitle).getText();
+
+        return getText(pageTitle);
     }
-    public void clickOnAddToCartButton() {
-        driver.findElement(addToCartButton).click();
+    public InventoryPage clickOnAddToCartButton() {
+        click(addToCartButton);
+        return this;
     }
 
-    public void clickOnCartIcon() {
-        driver.findElement(cartIcon).click();
-    }
+    public InventoryPage clickOnCartIcon() {
 
+        click(cartIcon);
+        return this;
+
+}
 }
